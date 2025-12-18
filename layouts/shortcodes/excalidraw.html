@@ -1,0 +1,11 @@
+{{ $file := .Get 0 }}
+{{ $path := printf "assets/%s" $file }}
+{{ if (fileExists $path) }}
+<div class="diagram-container excalidraw-diagram">
+    {{ readFile $path | safeHTML }}
+</div>
+{{ else }}
+<div style="color: red; border: 1px solid red; padding: 10px;">
+    Excalidraw file not found: {{ $file }}
+</div>
+{{ end }}

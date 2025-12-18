@@ -1,0 +1,24 @@
+{{ define "main" }}
+<section>
+    <h1>Welcome to the Zero-Latency Zone</h1>
+    <p>A technical blog focusing on Software Architecture, Multi-Agent Systems, and performance.</p>
+</section>
+
+<section style="margin-top: 3rem;">
+    <h2 style="border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">Recent Posts</h2>
+    <ul style="list-style: none; padding: 0;">
+        {{ range first 5 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+        <li style="margin-bottom: 1.5rem;">
+            <h3 style="margin-bottom: 0.5rem; font-size: 1.3rem;">
+                <a href="{{ .RelPermalink }}" style="color: var(--fg);">{{ .Title }}</a>
+            </h3>
+            <div class="metadata">{{ .Date.Format "Jan 2, 2006" }}</div>
+            <p>{{ .Summary }}</p>
+        </li>
+        {{ end }}
+    </ul>
+    <div style="margin-top: 2rem;">
+        <a href="/posts">View all posts &rarr;</a>
+    </div>
+</section>
+{{ end }}

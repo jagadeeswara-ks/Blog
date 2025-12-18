@@ -1,0 +1,28 @@
+baseURL = 'https://example.com/'
+languageCode = 'en-us'
+title = 'Zero-Latency Architect'
+theme = []
+
+# Optimization: Disable unused features to save build time and output size
+disableKinds = ["RSS", "sitemap", "taxonomy", "term"]
+
+# Optimization: Minify everything
+[minify]
+  disableXML = true
+  minifyOutput = true
+
+[markup]
+  [markup.highlight]
+    # Server-side syntax highlighting (Chroma)
+    noClasses = false  # Use inline styles for maximum portability and zero CSS request
+    style = 'monokai'
+    lineNos = false
+    guessSyntax = true
+
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true # Allow inline HTML for our SVG injections
+
+# Build-time asset handling
+[build]
+  writeStats = true
