@@ -1,0 +1,21 @@
+# Hugo
+public/
+resources/_gen/
+resources/images/
+.hugo_build.lock
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Assets
+scripts/temp_*.mmd
+scripts/temp_*.svg

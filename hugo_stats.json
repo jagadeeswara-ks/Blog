@@ -1,0 +1,52 @@
+{
+  "htmlElements": {
+    "tags": [
+      "a",
+      "article",
+      "aside",
+      "body",
+      "div",
+      "em",
+      "footer",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "head",
+      "header",
+      "html",
+      "li",
+      "main",
+      "meta",
+      "nav",
+      "noscript",
+      "ol",
+      "p",
+      "pre",
+      "section",
+      "span",
+      "strong",
+      "style",
+      "title",
+      "ul"
+    ],
+    "classes": [
+      "chroma",
+      "container",
+      "header-inner",
+      "highlight",
+      "logo",
+      "mermaid-diagram",
+      "post-content",
+      "prose",
+      "search-pill"
+    ],
+    "ids": [
+      "TableOfContents",
+      "code-example",
+      "conclusion",
+      "the-interaction-loop",
+      "what-is-agentic-coding"
+    ]
+  }
+}

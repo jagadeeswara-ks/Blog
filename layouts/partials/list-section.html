@@ -1,20 +1,15 @@
-{{ define "main" }}
 <div style="margin-bottom: 4rem;">
     <h2
-        style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 2rem; display: flex; align-items: center;">
+        style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 2rem;">
         Recent Writing
     </h2>
-
     <div style="display: flex; flex-direction: column; gap: 3rem;">
-        {{ range .Pages }}
+        {{ range first 5 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
         <article style="display: grid; grid-template-columns: 120px 1fr; gap: 2rem;">
-            <!-- Date Column -->
             <div
                 style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--fg-secondary); padding-top: 0.4rem;">
                 {{ .Date.Format "02 Jan 2006" }}
             </div>
-
-            <!-- Content Column -->
             <div>
                 <h3 style="font-size: 2rem; margin-bottom: 0.75rem;">
                     <a href="{{ .RelPermalink }}" style="color: var(--fg-primary);">{{ .Title }}</a>
@@ -22,20 +17,8 @@
                 <p style="color: var(--fg-secondary); margin: 0; font-size: 1.05rem; max-width: 600px;">
                     {{ .Summary }}
                 </p>
-                <div style="margin-top: 1rem;">
-                    <!-- Optional: Read more link or arrows if needed, but image is clean -->
-                </div>
             </div>
         </article>
         {{ end }}
     </div>
-
-    <!-- View Archive Link -->
-    <div style="margin-top: 4rem;">
-        <a href="/posts"
-            style="font-family: var(--font-mono); color: var(--accent); font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem;">
-            View Archive <span>-></span>
-        </a>
-    </div>
 </div>
-{{ end }}

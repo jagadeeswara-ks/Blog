@@ -1,14 +1,146 @@
 {{ define "main" }}
-<article>
-    <header>
-        <h1>{{ .Title }}</h1>
-        <div class="metadata">
-            <time datetime="{{ .Date.Format " 2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 2, 2006" }}</time>
-            &middot; <span>{{ .WordCount }} words</span>
+<div style="display: grid; grid-template-columns: 1fr 250px; gap: 4rem; position: relative;">
+
+    <!-- Left: Content -->
+    <article class="post-content">
+        <!-- Tag Pills -->
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem;">
+            <span
+                style="border: 1px solid var(--border); padding: 4px 12px; border-radius: 99px; font-size: 0.75rem; font-family: var(--font-mono);">React</span>
+            <span
+                style="border: 1px solid var(--border); padding: 4px 12px; border-radius: 99px; font-size: 0.75rem; font-family: var(--font-mono);">Performance</span>
         </div>
-    </header>
-    <div class="content">
-        {{ .Content }}
-    </div>
-</article>
+
+        <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">{{ .Title }}</h1>
+
+        <div
+            style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--fg-secondary); margin-bottom: 3rem; display: flex; gap: 1.5rem;">
+            <span>📅 {{ .Date.Format "Oct 14, 2023" }}</span>
+            <span>⏱️ {{ .ReadingTime }} min read</span>
+        </div>
+
+        <div class="prose">
+            {{ .Content }}
+        </div>
+    </article>
+
+    <!-- Right: Sidebar -->
+    <aside
+        style="position: sticky; top: 120px; height: fit-content; display: none; @media(min-width: 1024px) { display: block; }">
+        <h4 style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); text-transform: uppercase;">
+            On This Page</h4>
+        <div style="margin-top: 1rem; font-size: 0.9rem; color: var(--fg-secondary); line-height: 1.6;">
+            {{ .TableOfContents }}
+        </div>
+
+        <!-- Ad/Promo Card simulation from image -->
+        <div
+            style="margin-top: 3rem; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem;">
+            <div style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--fg-primary);">Vercel
+            </div>
+            <p style="font-size: 0.8rem; color: var(--fg-secondary); margin-bottom: 1rem;">Develop. Preview. Ship.</p>
+            <a href="#" style="font-size: 0.8rem; color: var(--accent);">Learn More -></a>
+        </div>
+    </aside>
+
+</div>
+
+<style>
+    /* Prose styling */
+    .prose p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+        color: #b0b8b4;
+    }
+
+    .prose h2 {
+        font-size: 2rem;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        color: var(--fg-primary);
+    }
+
+    .prose h3 {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    /* Code block styling (Mac window style) */
+    .prose pre {
+        background: #0f1c16;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 0;
+        /* Header takes space */
+        position: relative;
+        margin: 2rem 0;
+        overflow: hidden;
+    }
+
+    /* Decoration: Top bar with dots */
+    .prose pre::before {
+        content: "● ● ●";
+        display: block;
+        background: #0b1410;
+        border-bottom: 1px solid var(--border);
+        padding: 8px 16px;
+        color: #333;
+        /* Dim dots */
+        text-align: left;
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        color: #4a5a50;
+    }
+
+    .prose pre code {
+        display: block;
+        padding: 1.5rem;
+        color: #e2e8f0;
+        font-size: 0.9rem;
+    }
+
+    /* Highlight accent words in prose (simulated for manual additions) */
+    .prose strong {
+        color: var(--accent);
+        font-weight: 500;
+    }
+
+    .prose blockquote {
+        border-left: 2px solid var(--accent);
+        background: linear-gradient(to right, var(--accent-dim), transparent);
+        padding: 1.5rem;
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: 1.2rem;
+        margin: 2rem 0;
+        border-radius: 4px;
+        color: var(--fg-primary);
+    }
+
+    /* TOC Styling */
+    nav#TableOfContents ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    nav#TableOfContents li {
+        margin-bottom: 0.5rem;
+    }
+
+    nav#TableOfContents a {
+        color: var(--fg-secondary);
+        text-decoration: none;
+    }
+
+    nav#TableOfContents a:hover {
+        color: var(--accent);
+    }
+
+    @media (min-width: 1024px) {
+        aside {
+            display: block !important;
+        }
+    }
+</style>
 {{ end }}
